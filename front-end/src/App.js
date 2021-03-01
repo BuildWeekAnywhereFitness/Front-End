@@ -1,12 +1,12 @@
-import './App.css';
-import Form from './components/SignupForm';
-import SignIn from './components/SignIn';
+import "./App.css";
+import ClientWalkthrough from "./components/ClientWalkthrough";
+import InstructorWalkthrough from "./components/InstructorWalkthrough";
 
 function App() {
   
   return (
       <div>
-        <Form/>
+        <ClientWalkthrough />
       </div>     
   );
 }
