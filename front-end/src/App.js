@@ -5,9 +5,9 @@ import InstructorWalkthrough from "./components/InstructorWalkthrough";
 function App() {
   
   return (
-      <div>
-        <ClientWalkthrough />
-      </div>     
+    <div>
+      <ClientWalkthrough />
+    </div>
   );
 }
 
