@@ -1,21 +1,14 @@
-import React, {useState} from 'react'
-
 import './App.css';
-import Form from './SignupForm';
-import schema from './formSchema'
-import SignIn from './SignIn'
+import Form from './components/SignupForm';
+import SignIn from './components/SignIn';
 
-
-export default function App() {
+function App() {
   
-
   return (
-    <div className="App">
-
-      <div className="container">
+      <div>
         <Form/>
-      
       </div>     
-    </div>
   );
 }
+
+export default App;

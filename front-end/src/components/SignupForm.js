@@ -3,8 +3,7 @@ import React, {useState} from 'react'
 const initialFormValues = {
     username: '',
     password: '',
-    client: '',
-    instructor: '',
+    user: '',
   }
 
 export default function App() {
