@@ -1,29 +1,59 @@
-import React, {useState} from 'react'
-	
+import React, {useState, useEffect} from 'react'
+import formSchema from './formSchema'
+import * as yup from 'yup'	
+
 const initialFormValues = {
     username: '',
     password: '',
     user: '',
   }
+  
+  const initialFormErrors = {
+    username: '',
+    password: '',
+    user: '',
+  }
+  const initialDisabled = true
 
 export default function App() {
 	const [form, setForm] = useState(initialFormValues)
+    const [formErrors, setFormErrors] = useState(initialFormErrors)
+    const [disabled, setDisabled] = useState(initialDisabled)
+
+
+    const inputChange = (name, value) => {
+        yup.reach(formSchema, name)
+          .validate(value)
+          .then(() => {setFormErrors({...formErrors, [name]: ''})})
+          .catch(err => {setFormErrors({...formErrors, [name]: err.errors[0]})})
+        setForm({
+          ...form,
+          [name]: value
+        })
+      }
 
     const onChange = evt => {
-        const {checked, type, name, value} = evt.target
-   	  const valueToUse = type === 'checkbox' ? checked : value
-        setForm({...form, [name]: valueToUse })
+        const {name, value} = evt.target
+       inputChange(name, value)
     }
  
     const onSubmit = evt => {
         evt.preventDefault()
     }
+    useEffect(() => {
+        formSchema.isValid(form).then(valid => setDisabled(!valid))
+      }, [form])
  
-    return (
-        <form className='form container' onSubmit={onSubmit}>
+    return  (
+       
+        <form className='form container' onSubmit={onSubmit}> 
             <div className='form-group inputs'>
-                <label>Name
+                 <div>{formErrors.username}</div>
+                 <div>{formErrors.password}</div>
+                 <div>{formErrors.user}</div>
+                    <label>Name
                     <input
+                   
                         name='username'
                         type='text'
                         onChange={onChange}
@@ -63,7 +93,7 @@ export default function App() {
                 </label>
  
                 <div className='submit'>
-                    <button disabled={!form.username || !form.password || !form.user}>submit</button>
+                    <button disabled={disabled}>submit</button>
                 </div>
             </div>
         </form>
