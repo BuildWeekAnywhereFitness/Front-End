@@ -5,13 +5,13 @@ import * as yup from 'yup'
 const initialFormValues = {
     username: '',
     password: '',
-    user: '',
+    role: '',
   }
   
   const initialFormErrors = {
     username: '',
     password: '',
-    user: '',
+    role: '',
   }
   const initialDisabled = true
 
@@ -50,7 +50,7 @@ export default function App() {
             <div className='form-group inputs'>
                  <div>{formErrors.username}</div>
                  <div>{formErrors.password}</div>
-                 <div>{formErrors.user}</div>
+                 <div>{formErrors.role}</div>
                     <label>Name
                     <input
                    
@@ -76,19 +76,19 @@ export default function App() {
  
                 <label>Client
                 <input 
-                    checked={form.user === 'client'} 
+                    checked={form.role === 'client'} 
                     value='client'
 			        onChange={onChange}
- 			        name='user' 
+ 			        name='role' 
                     type='radio' />
                 </label>
  
                 <label>Instructor
                 <input 
-			        checked={form.user === 'instructor'}
+			        checked={form.role === 'instructor'}
 			        value='instructor'
 			        onChange={onChange}
-                    name='user' 
+                    name='role' 
                     type='radio' />
                 </label>
  
