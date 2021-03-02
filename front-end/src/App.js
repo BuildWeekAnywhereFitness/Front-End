@@ -1,3 +1,4 @@
+
 import "./App.css";
 
 import ClientWalkthrough from "./components/ClientWalkthrough";
@@ -13,3 +14,8 @@ function App() {
 }
 
 export default App;
+<<<<<<< HEAD
+=======
+
+ 
+>>>>>>> origin
