@@ -22,8 +22,6 @@ const ClientDash = (props) => {
     localStorage.removeItem("token");
   };
 
-  // HANDLING DOUBLE AXIOS //
-
   const getClassList = () => {
     axiosWithAuth()
       .get("/api/classes")
@@ -38,8 +36,6 @@ const ClientDash = (props) => {
   useEffect(() => {
     getClassList();
   }, []);
-
-  // MAPPING LOCATIONS TO CLASSES //
 
   return (
     <div>
