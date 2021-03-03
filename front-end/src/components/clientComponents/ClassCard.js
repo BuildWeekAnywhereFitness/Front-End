@@ -6,21 +6,12 @@ const ClassCard = (props) => {
 
   return (
     <ClassCardStyled>
-      {data.intensity.toUpperCase() === "HIGH" ? (
-        <HighIntensity>
-          <Title>{data.name}</Title>
-          <ClassDetails>
-            {data.type}//{data.intensity} Intensity
-          </ClassDetails>
-        </HighIntensity>
-      ) : (
-        <TitleContainer>
-          <Title>{data.name}</Title>
-          <ClassDetails>
-            {data.type}//{data.intensity} Intensity
-          </ClassDetails>
-        </TitleContainer>
-      )}
+      <HighIntensity>
+        <Title>{data.name}</Title>
+        <ClassDetails>
+          {data.type}//{data.level} Intensity
+        </ClassDetails>
+      </HighIntensity>
       <TopInfo>
         <SeparateInfo>
           <p>
@@ -29,7 +20,7 @@ const ClassCard = (props) => {
         </SeparateInfo>
         <SeparateInfo>
           <Paragraph>
-            <BoldSpan>Date</BoldSpan> - {data.start}
+            <BoldSpan>Date</BoldSpan> - {data.date}, at {data.startTime}
           </Paragraph>
           <Paragraph>
             <BoldSpan>Duration</BoldSpan> - {data.duration}
@@ -40,20 +31,17 @@ const ClassCard = (props) => {
             <BoldSpan>Spots Filled</BoldSpan> - {data.attendees}
           </Paragraph>
           <Paragraph>
-            <BoldSpan>Total Spots</BoldSpan> - {data.maxsize}
+            <BoldSpan>Total Spots</BoldSpan> - {data.classSize}
           </Paragraph>
         </SeparateInfo>
       </TopInfo>
-      <BotInfo>
-        <Reserve>Reserve Spot</Reserve>
-      </BotInfo>
     </ClassCardStyled>
   );
 };
 
 const ClassCardStyled = styled.div`
   width: 400px;
-  height: 400px;
+  height: 325px;
   margin: 25px 0;
   display: flex;
   flex-direction: column;
@@ -105,34 +93,7 @@ const BoldSpan = styled.span`
   font-weight: 700;
 `;
 const Paragraph = styled.p`
-  width: 125px;
-`;
-
-// RESERVE BUTTON STYLING
-const BotInfo = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const Reserve = styled.button`
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 600;
-  font-size: 1rem;
-  margin-top: 20px;
-  background: linear-gradient(0.45turn, #00a3cc, #00627a);
-  height: 60px;
-  width: 100px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s;
-  &:hover {
-    transform: scale(1.05);
-    transition: 0.3s;
-  }
+  width: 135px;
 `;
 
 export default ClassCard;

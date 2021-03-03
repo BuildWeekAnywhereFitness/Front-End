@@ -32,7 +32,7 @@ export const mockData = [
   {
     name: "Shred Session 1.5",
     type: "RIPPED",
-    start: "April 2th, 8:00 pm",
+    start: "April 2nd, 8:00 pm",
     duration: "1.5 hrs",
     intensity: "High",
     location: "1st Chad Avenue, Scottsdale, Arizona",

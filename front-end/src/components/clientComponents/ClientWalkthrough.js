@@ -23,7 +23,7 @@ const ClientWalkthrough = () => {
             Find, reschedule, and cancel upcoming appointments with ease, by
             searching through classes according to your preference!
           </Para2>
-          <StyledLink>Skip</StyledLink>
+          <StyledLink to="/client-dash">Skip</StyledLink>
         </ParaWrapper>
       </CardWrapper>
     </div>
