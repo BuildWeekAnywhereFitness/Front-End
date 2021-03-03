@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { axiosWithAuth } from "../../helpers/axiosWithAuth";
 
 const ClientClass = (props) => {
-  const { addToReservedClasses } = props;
+  const { addToReservedClasses, fitnessClasses, setFitnessClasses } = props;
   const [selectClass, setSelectClass] = useState([]);
   const params = useParams();
   const { push } = useHistory();
@@ -13,7 +13,8 @@ const ClientClass = (props) => {
   let id = 1;
   let calcId = id + Number(params.id);
 
-  const saveClass = () => {
+  const saveClass = (e) => {
+    e.preventDefault();
     addToReservedClasses(selectClass);
     push("/client-dash");
     // axiosWithAuth()
@@ -30,6 +31,10 @@ const ClientClass = (props) => {
       .get(`/api/classes/${id}`)
       .then((res) => {
         setSelectClass(res.data);
+        const filteredClasses = fitnessClasses.filter(
+          (value) => res.data.id !== value.id
+        );
+        setFitnessClasses(filteredClasses);
       })
       .catch((err) => {
         console.log(err);

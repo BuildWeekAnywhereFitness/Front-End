@@ -54,6 +54,8 @@ function App() {
         path="/client-class/:id"
         component={ClientClass}
         addToReservedClasses={addToReservedClasses}
+        fitnessClasses={fitnessClasses}
+        setFitnessClasses={setFitnessClasses}
       />
       <ClientPrivateRoute
         exact
