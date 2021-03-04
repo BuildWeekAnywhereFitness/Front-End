@@ -13,6 +13,7 @@ const CancelClass = (props) => {
     setCurrentClass(clientClasses[id]);
   };
 
+  // API WASN'T READY FOR THIS FUNCTION.
   const deleteClass = () => {
     const filteredClasses = clientClasses.filter(
       (value) => value !== currentClass

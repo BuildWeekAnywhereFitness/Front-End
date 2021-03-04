@@ -17,6 +17,8 @@ const ClientClass = (props) => {
     e.preventDefault();
     addToReservedClasses(selectClass);
     push("/client-dash");
+
+    // API ISN'T READY FORT THIS PART, THAT's WHY ITS COMMENTED
     // axiosWithAuth()
     //   .post(`/api/attending/${params.id}`)
     //   .then((res) => {
