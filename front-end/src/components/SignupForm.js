@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import formSchema from "./formSchema";
 import * as yup from "yup";
-import './FormStyling.css'
+import "./FormStyling.css";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
@@ -55,73 +55,83 @@ export default function SignUp() {
       .catch((err) => {
         console.log(err);
       });
-  
-    useEffect(() => {
-        formSchema.isValid(form).then(valid => setDisabled(!valid))
-      }, [form])
- 
-    return  (
-       
-        <form className='formContainer' onSubmit={onSubmit}> 
-            <div className='FormGroupInputs'>
-               <header>
-                   <h1>Sign Up Now!</h1>
-               </header>
-                 
-                    <section className='info'>
-                    <label className='username'><h4>Username</h4>
-                    <div>{formErrors.username}</div>
-                    <input className='inputBox'
-                   
-                        name='username'
-                        type='text'
-                        onChange={onChange}
-                        value={form.username}
-                        placeholder='type a username...'
-                        maxLength=''
-                    />
-                </label>
- 
-                <label className='password'><h4>Password</h4>
-                <div>{formErrors.password}</div>
-                    <input className='inputBox'
-                        name='password'
-                        type='text'
-                        onChange={onChange}
-                        value={form.password}
-                        placeholder='type a password...'
-                        maxLength='30'
-                    />
-                </label>
-                
-                 <div>{formErrors.role}</div>
-            <section className='roles'>
-                <h4>Role</h4>
- 
-                <label className='labels'>Client
-                <input className='client'
-                    checked={form.role === "2".valueOf()} 
-                    value="2"
-			              onChange={onChange}
- 			        name='role' 
-                    type='radio' />
-                </label>
- 
-                <label className='labels'>Instructor
-                <input className='instructor'
-			        checked={form.role === "1"}
-			        value="1"
-			        onChange={onChange}
-                    name='role' 
-                    type='radio' />
-                </label>
-            </section>
-                <div className='submit'>
-                    <button className='button' disabled={disabled}>submit</button>
-                </div>
-            
-                </section>  
-            </div>
-        </form>
-    )
- }
+  };
+
+  useEffect(() => {
+    formSchema.isValid(form).then((valid) => setDisabled(!valid));
+  }, [form]);
+
+  return (
+    <form className="formContainer" onSubmit={onSubmit}>
+      <div className="FormGroupInputs">
+        <header>
+          <h1>Sign Up Now!</h1>
+        </header>
+
+        <section className="info">
+          <label className="username">
+            <h4>Username</h4>
+            <div>{formErrors.username}</div>
+            <input
+              className="inputBox"
+              name="username"
+              type="text"
+              onChange={onChange}
+              value={form.username}
+              placeholder="type a username..."
+              maxLength=""
+            />
+          </label>
+
+          <label className="password">
+            <h4>Password</h4>
+            <div>{formErrors.password}</div>
+            <input
+              className="inputBox"
+              name="password"
+              type="text"
+              onChange={onChange}
+              value={form.password}
+              placeholder="type a password..."
+              maxLength="30"
+            />
+          </label>
+
+          <div>{formErrors.role}</div>
+          <section className="roles">
+            <h4>Role</h4>
+
+            <label className="labels">
+              Client
+              <input
+                className="client"
+                checked={form.role === "2".valueOf()}
+                value="2"
+                onChange={onChange}
+                name="role"
+                type="radio"
+              />
+            </label>
+
+            <label className="labels">
+              Instructor
+              <input
+                className="instructor"
+                checked={form.role === "1"}
+                value="1"
+                onChange={onChange}
+                name="role"
+                type="radio"
+              />
+            </label>
+          </section>
+          <div className="submit">
+            <button className="button" disabled={disabled}>
+              submit
+            </button>
+          </div>
+        </section>
+      </div>
+    </form>
+  );
+}
