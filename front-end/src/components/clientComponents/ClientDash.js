@@ -40,7 +40,7 @@ const ClientDash = (props) => {
   return (
     <div>
       <TopContentContainer>
-        <LogoutLink to="/signin" onClick={logout}>
+        <LogoutLink to="/login" onClick={logout}>
           Logout
         </LogoutLink>
         <MyDiv>

@@ -25,7 +25,7 @@ function ClientPrivateRoute({
             />
           );
         } else {
-          return <Redirect to={"/signin"} />;
+          return <Redirect to={"/login"} />;
         }
       }}
     />

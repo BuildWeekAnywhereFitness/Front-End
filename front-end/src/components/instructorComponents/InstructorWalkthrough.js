@@ -8,7 +8,8 @@ const InstructorWalkthrough = () => {
       <CardWrapper>
         <HeaderWrapper>
           <Header>
-            Thank you for choosing <br />
+            Welcome Back!
+            <br />
             <HeaderSpan>AnywhereFitness!</HeaderSpan>
           </Header>
         </HeaderWrapper>
@@ -20,11 +21,11 @@ const InstructorWalkthrough = () => {
             Fitness classes wherever they might be held.
           </Para>
           <Para2>
-            Create, reschedule, and cancel upcoming classes that you'd like with
-            ease. You can also create a virtual punch pass for those that attend
-            many of your classes!
+            This is your all-in one dashboard were you can add, update, and
+            delete classes at your discretion. Using this should help you
+            organize and handle all your needs to be a successful instructor!
           </Para2>
-          <StyledLink>Skip</StyledLink>
+          <StyledLink to="/inst-dash">Skip</StyledLink>
         </ParaWrapper>
       </CardWrapper>
     </div>

@@ -50,7 +50,7 @@ export default function SignUp() {
     axios
       .post("https://anytimefitnessbuild.herokuapp.com/api/auth/register", form)
       .then((res) => {
-        push("/signin");
+        push("/login");
       })
       .catch((err) => {
         console.log(err);
@@ -112,7 +112,6 @@ export default function SignUp() {
                 type="radio"
               />
             </label>
-
             <label className="labels">
               Instructor
               <input

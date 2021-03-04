@@ -27,6 +27,8 @@ export default function Signin() {
         localStorage.setItem("token", JSON.stringify(res.data.token));
         if (form.role === "2") {
           push("/client-walk");
+        } else if (form.role === "1") {
+          push("/inst-walk");
         }
         setForm(initialFormValues);
       })
@@ -78,7 +80,6 @@ export default function Signin() {
               type="radio"
             />
           </label>
-
           <label>
             Instructor
             <input
