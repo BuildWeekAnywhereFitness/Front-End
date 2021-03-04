@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import formSchema from './formSchema'
-import * as yup from 'yup'	
+import * as yup from 'yup'
+import './FormStyling.css'	
 
 const initialFormValues = {
     username: '',
@@ -46,13 +47,16 @@ export default function App() {
  
     return  (
        
-        <form className='form container' onSubmit={onSubmit}> 
-            <div className='form-group inputs'>
-                 <div>{formErrors.username}</div>
-                 <div>{formErrors.password}</div>
-                 <div>{formErrors.role}</div>
-                    <label>Name
-                    <input
+        <form className='formContainer' onSubmit={onSubmit}> 
+            <div className='FormGroupInputs'>
+               <header>
+                   <h1>Sign Up Now!</h1>
+               </header>
+                 
+                    <section className='info'>
+                    <label className='username'><h4>Username</h4>
+                    <div>{formErrors.username}</div>
+                    <input className='inputBox'
                    
                         name='username'
                         type='text'
@@ -63,8 +67,9 @@ export default function App() {
                     />
                 </label>
  
-                <label>Password
-                    <input
+                <label className='password'><h4>Password</h4>
+                <div>{formErrors.password}</div>
+                    <input className='inputBox'
                         name='password'
                         type='text'
                         onChange={onChange}
@@ -73,9 +78,13 @@ export default function App() {
                         maxLength='30'
                     />
                 </label>
+                
+                 <div>{formErrors.role}</div>
+            <section className='roles'>
+                <h4>Role</h4>
  
-                <label>Client
-                <input 
+                <label className='labels'>Client
+                <input className='client'
                     checked={form.role === 'client'} 
                     value='client'
 			        onChange={onChange}
@@ -83,18 +92,20 @@ export default function App() {
                     type='radio' />
                 </label>
  
-                <label>Instructor
-                <input 
+                <label className='labels'>Instructor
+                <input className='instructor'
 			        checked={form.role === 'instructor'}
 			        value='instructor'
 			        onChange={onChange}
                     name='role' 
                     type='radio' />
                 </label>
- 
+            </section>
                 <div className='submit'>
-                    <button disabled={disabled}>submit</button>
+                    <button className='button' disabled={disabled}>submit</button>
                 </div>
+            
+                </section>  
             </div>
         </form>
     )

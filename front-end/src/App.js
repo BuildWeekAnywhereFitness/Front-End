@@ -14,8 +14,5 @@ function App() {
 }
 
 export default App;
-<<<<<<< HEAD
-=======
 
  
->>>>>>> origin
