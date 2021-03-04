@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import axios from "axios";
-import { date } from "yup/lib/locale";
 
 const initialClass = {
   attendees: null,
   classSize: null,
   date: "",
   duration: "",
-  id: date.now(),
+  id: Math.floor(Math.random() * 100 + 5),
   level: "",
   location: "",
   name: "",
@@ -19,10 +18,11 @@ const initialClass = {
 const InstUpdateClass = (props) => {
   const { push } = useHistory();
   const [newClass, setNewClass] = useState(initialClass);
+  const { id } = useParams();
 
   useEffect(() => {
     axios
-      .get("https://anytimefitnessbuild.herokuapp.com/api/classes")
+      .get(`https://anytimefitnessbuild.herokuapp.com/api/classes/${id}`)
       .then((res) => {
         console.log("Res in add Class");
         setNewClass(res.data);
@@ -42,7 +42,10 @@ const InstUpdateClass = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put("https://anytimefitnessbuild.herokuapp.com/api/classes", newClass)
+      .put(
+        `https://anytimefitnessbuild.herokuapp.com/api/classes/${id}`,
+        newClass
+      )
       .then((res) => {
         console.log("res when posting new class:", res);
         props.setSavedClasses(
@@ -59,7 +62,7 @@ const InstUpdateClass = (props) => {
           classSize: null,
           date: "",
           duration: "",
-          id: date.now(),
+          id: res.data.length + 1,
           level: "",
           location: "",
           name: "",
@@ -82,7 +85,7 @@ const InstUpdateClass = (props) => {
           onChange={handleChange}
           type="text"
           value={newClass.name}
-          placeholder="Enter Potluck Name"
+          placeholder="Enter Class Name"
         ></input>
         <label>Location:</label>
         <input
@@ -118,7 +121,7 @@ const InstUpdateClass = (props) => {
         ></input>
         <label>Intensity Level:</label>
         <input
-          name="Level"
+          name="level"
           onChange={handleChange}
           type="text"
           value={newClass.level}
@@ -139,6 +142,14 @@ const InstUpdateClass = (props) => {
           type="text"
           value={newClass.duration}
           placeholder="Enter Class Duration here"
+        ></input>
+        <label>Class Attendees:</label>
+        <input
+          name="duration"
+          onChange={handleChange}
+          type="text"
+          value={newClass.attendees}
+          placeholder="Number of Attendees"
         ></input>
 
         <button>Update This Class Here!</button>

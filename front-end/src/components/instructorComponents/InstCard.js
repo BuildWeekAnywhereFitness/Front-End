@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const ClassCard = (props) => {
+const InstClassCard = (props) => {
   const { data } = props;
 
   return (
@@ -96,4 +96,4 @@ const Paragraph = styled.p`
   width: 135px;
 `;
 
-export default ClassCard;
+export default InstClassCard;

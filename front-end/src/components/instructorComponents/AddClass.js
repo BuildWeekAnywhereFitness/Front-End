@@ -8,7 +8,7 @@ const initialClass = {
   classSize: null,
   date: "",
   duration: "",
-  id: date.now(),
+  id: Math.floor(Math.random() * 100 + 5),
   level: "",
   location: "",
   name: "",
@@ -25,7 +25,7 @@ const InstAddClass = (props) => {
       .get("https://anytimefitnessbuild.herokuapp.com/api/classes")
       .then((res) => {
         console.log("Res in add Class");
-        props.setInstClasses(res.data);
+        props.setInstClasses(...props.instClasses, res.data);
       })
       .catch((err) => {
         console.log("error getting from api in updateClass:", err);
@@ -54,7 +54,7 @@ const InstAddClass = (props) => {
         push("/inst-dash");
       })
       .catch((err) => {
-        console.log("error posting Potluck:", err);
+        console.log("error posting class:", err);
       });
   };
 
@@ -67,7 +67,7 @@ const InstAddClass = (props) => {
           onChange={handleChange}
           type="text"
           value={newClass.name}
-          placeholder="Enter Potluck Name"
+          placeholder="Enter Class Name"
         ></input>
         <label>Location:</label>
         <input
@@ -103,7 +103,7 @@ const InstAddClass = (props) => {
         ></input>
         <label>Intensity Level:</label>
         <input
-          name="Level"
+          name="level"
           onChange={handleChange}
           type="text"
           value={newClass.level}
@@ -124,6 +124,14 @@ const InstAddClass = (props) => {
           type="text"
           value={newClass.duration}
           placeholder="Enter Class Duration here"
+        ></input>
+        <label>Max Class Size:</label>
+        <input
+          name="duration"
+          onChange={handleChange}
+          type="number"
+          value={newClass.classSize}
+          placeholder="Class size:"
         ></input>
 
         <button>Add Class Here!</button>

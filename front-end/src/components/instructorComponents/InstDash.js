@@ -2,16 +2,22 @@ import { Link, useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import InstClassCard from "./InstCard";
 import { axiosWithAuth } from "../../helpers/axiosWithAuth";
+import styled from "styled-components";
 
 //PATH TO THIS COMPONENT IS '/inst-dash'
 
-const InstructorDash = (props) => {
-  const { instClasses, savedClasses, setInstClasses, setSavedClasses } = props;
+const InstDash = (props) => {
+  console.log("PROPS:", props);
+  const { instClasses, setInstClasses, savedClasses, setSavedClasses } = props;
   const { push } = useHistory();
 
   const logout = () => {
     localStorage.removeItem("token");
     push("/login");
+  };
+
+  const addClass = (e) => {
+    push("/add-class");
   };
 
   const getInstClass = () => {
@@ -34,23 +40,28 @@ const InstructorDash = (props) => {
     <div className="instructor-container">
       <h1>Welcome to Your Instructor DashBoard</h1>
       <div className="top-container">
-        <Link to="/update-class:id">Update This Class</Link>
-        <Link>Delete This Class</Link>
         <Link onClick={logout}>Log-Out</Link>
+        <Link onClick={addClass}>Add New Class</Link>
         <h3>Avaliable Classes</h3>
       </div>
       <div className="class-container">
-        {/* {instClasses.map((data, index) => {
+        {instClasses.map((data, index) => {
           return (
             <div>
-              <Link to={`/instructor-class/${index}`}></Link>
-              <InstClassCard data={data} key={index} />
+              <ClassLink to={`/instructor-class/${index}`}>
+                <InstClassCard data={data} key={index} />
+              </ClassLink>
             </div>
           );
-        })} */}
+        })}
       </div>
     </div>
   );
 };
 
-export default InstructorDash;
+const ClassLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
+
+export default InstDash;
