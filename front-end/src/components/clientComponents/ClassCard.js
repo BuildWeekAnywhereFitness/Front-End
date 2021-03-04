@@ -9,7 +9,7 @@ const ClassCard = (props) => {
       <HighIntensity>
         <Title>{data.name}</Title>
         <ClassDetails>
-          {data.type}//{data.level} Intensity
+          {data.type}/{data.level} Intensity
         </ClassDetails>
       </HighIntensity>
       <TopInfo>

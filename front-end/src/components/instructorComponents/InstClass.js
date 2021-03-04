@@ -39,6 +39,7 @@ const InstClass = (props) => {
       .catch((err) => {
         console.log("error in delete", err);
       });
+    push("/inst-dash");
   };
 
   const getClasses = (id) => {

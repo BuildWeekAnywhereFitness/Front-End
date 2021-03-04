@@ -8,7 +8,7 @@ import styled from "styled-components";
 
 const InstDash = (props) => {
   console.log("PROPS:", props);
-  const { instClasses, setInstClasses, savedClasses, setSavedClasses } = props;
+  const { instClasses, setInstClasses } = props;
   const { push } = useHistory();
 
   const logout = () => {

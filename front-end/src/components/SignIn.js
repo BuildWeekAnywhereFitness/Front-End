@@ -63,7 +63,7 @@ export default function Signin() {
             <input
               className="inputBox"
               name="password"
-              type="text"
+              type="password"
               onChange={onChange}
               value={form.password}
               placeholder="type a password..."

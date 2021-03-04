@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import { date } from "yup/lib/locale";
 
 const initialClass = {
   attendees: null,

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ClassCard from "./ClassCard";
 import { axiosWithAuth } from "../../helpers/axiosWithAuth";
 
@@ -15,7 +15,6 @@ const initialSearch = {
 
 const ClientDash = (props) => {
   const [search, setSearch] = useState(initialSearch);
-  const { push } = useHistory();
   const { fitnessClasses, setFitnessClasses, clientClasses } = props;
 
   const logout = () => {
@@ -121,6 +120,8 @@ const ClientDash = (props) => {
               value.name.toLowerCase().includes(search.name.toLowerCase())
             ) {
               return value;
+            } else {
+              return value;
             }
           })
           .filter((value) => {
@@ -128,6 +129,8 @@ const ClientDash = (props) => {
             if (search.date == null) {
               return value;
             } else if (value.date.includes(search.date)) {
+              return value;
+            } else {
               return value;
             }
           })
@@ -137,15 +140,19 @@ const ClientDash = (props) => {
               return value;
             } else if (value.duration.includes(search.duration)) {
               return value;
+            } else {
+              return value;
             }
           })
           .filter((value) => {
             // FILTER BY CLASS TYPE
-            if (search.type == "") {
+            if (search.type === "") {
               return value;
             } else if (
               value.type.toLowerCase().includes(search.type.toLowerCase())
             ) {
+              return value;
+            } else {
               return value;
             }
           })
@@ -156,6 +163,8 @@ const ClientDash = (props) => {
             } else if (
               value.level.toLowerCase().includes(search.intensity.toLowerCase())
             ) {
+              return value;
+            } else {
               return value;
             }
           })
@@ -168,6 +177,8 @@ const ClientDash = (props) => {
                 .toLowerCase()
                 .includes(search.location.toLowerCase())
             ) {
+              return value;
+            } else {
               return value;
             }
           })
