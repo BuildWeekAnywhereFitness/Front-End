@@ -1,20 +1,22 @@
 import React, {useState, useEffect} from 'react'
 import formSchema from './formSchema'
 import * as yup from 'yup'
-import './FormStyling.css'	
+import './FormStyling.css'
+import axios from "axios";
+import { useHistory } from "react-router-dom";	
 
 const initialFormValues = {
     username: '',
     password: '',
     role: '',
-  }
+  };
   
   const initialFormErrors = {
     username: '',
     password: '',
     role: '',
-  }
-  const initialDisabled = true
+  };
+  const initialDisabled = true;
 
 export default function App() {
 	const [form, setForm] = useState(initialFormValues)
@@ -36,11 +38,20 @@ export default function App() {
     const onChange = evt => {
         const {name, value} = evt.target
        inputChange(name, value)
-    }
+    };
  
     const onSubmit = evt => {
         evt.preventDefault()
     }
+    axios
+      .post("https://anytimefitnessbuild.herokuapp.com/api/auth/register", form)
+      .then((res) => {
+        push("/signin");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  
     useEffect(() => {
         formSchema.isValid(form).then(valid => setDisabled(!valid))
       }, [form])
@@ -85,8 +96,8 @@ export default function App() {
  
                 <label className='labels'>Client
                 <input className='client'
-                    checked={form.role === 'client'} 
-                    value='client'
+                    checked={form.role === "2".valueOf()} 
+                    value="2"
 			        onChange={onChange}
  			        name='role' 
                     type='radio' />
@@ -94,8 +105,8 @@ export default function App() {
  
                 <label className='labels'>Instructor
                 <input className='instructor'
-			        checked={form.role === 'instructor'}
-			        value='instructor'
+			        checked={form.role === "1"}
+			        value="1"
 			        onChange={onChange}
                     name='role' 
                     type='radio' />
@@ -109,4 +120,4 @@ export default function App() {
             </div>
         </form>
     )
-}
+ }
