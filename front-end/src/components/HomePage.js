@@ -7,7 +7,7 @@ const HomePage = () => {
     <div>
       <NavBar>
         <TopLink to="/signup">Sign Up</TopLink>
-        <TopLink to="/signin">Log In</TopLink>
+        <TopLink to="/login">Log In</TopLink>
       </NavBar>
       <MainContent>
         <Header>
@@ -15,7 +15,7 @@ const HomePage = () => {
           <Span>AnywhereFitness</Span>
         </Header>
         <Para>The best place to post and find fitness classes!</Para>
-        <StyledLink to="/signin">Log In Here</StyledLink>
+        <StyledLink to="/login">Log In Here</StyledLink>
         <Para2>
           Not with us yet? <StyledLink to="/signup">Sign Up Here</StyledLink>
         </Para2>
