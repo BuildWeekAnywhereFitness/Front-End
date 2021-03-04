@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./FormStyling.css";
+import styled from "styled-components";
 
 const initialFormValues = {
   username: "",
@@ -39,7 +40,7 @@ export default function Signin() {
 
   return (
     <form className="SignInContainer" onSubmit={onSubmit}>
-      <div className="FormGroupInputs">
+      <div className="FormContainer">
         <header>
           <h1>Sign In!</h1>
         </header>
@@ -98,9 +99,22 @@ export default function Signin() {
               submit
             </button>
           </div>
+          <div>
+            <NotWith>
+              Not with us? <Link to="/signup">Create an Account</Link>
+            </NotWith>
+          </div>
         </section>
       </div>
     </form>
   );
 }
+
+const NotWith = styled.p`
+  font-family: "Roboto", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: -50px;
+  padding: 0 0 20px 0;
+`;
 //

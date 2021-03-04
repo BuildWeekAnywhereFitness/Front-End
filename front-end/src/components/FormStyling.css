@@ -71,7 +71,7 @@ h1 {
   display: flex;
   justify-content: center;
   padding-top: 8%;
-  padding-bottom: 8%;
+  padding-bottom: 15%;
 }
 .button {
   background: linear-gradient(0.45turn, #00a3cc, #00627a);

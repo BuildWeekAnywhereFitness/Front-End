@@ -3,7 +3,8 @@ import formSchema from "./formSchema";
 import * as yup from "yup";
 import "./FormStyling.css";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import styled from "styled-components";
 
 const initialFormValues = {
   username: "",
@@ -129,8 +130,21 @@ export default function SignUp() {
               submit
             </button>
           </div>
+          <div>
+            <NotWith>
+              Already have an account? <Link to="/login">Login here</Link>
+            </NotWith>
+          </div>
         </section>
       </div>
     </form>
   );
 }
+
+const NotWith = styled.p`
+  font-family: "Roboto", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: -50px;
+  padding: 0 0 20px 0;
+`;
