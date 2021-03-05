@@ -49,8 +49,8 @@ const InstDash = (props) => {
         {instClasses.map((data, index) => {
           return (
             <div>
-              <ClassLink to={`/instructor-class/${index}`}>
-                <InstClassCard data={data} key={index} />
+              <ClassLink to={`/instructor-class/${instClasses[index].id}`}>
+                <InstClassCard data={data} key={instClasses[index].id} />
               </ClassLink>
             </div>
           );

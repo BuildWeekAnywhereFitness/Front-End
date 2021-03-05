@@ -54,8 +54,8 @@ const InstUpdateClass = (props) => {
           })
         );
         setNewClass({
-          attendees: null,
-          classSize: null,
+          attendees: "",
+          classSize: "",
           date: "",
           duration: "",
           level: "",
