@@ -16,8 +16,8 @@ const InstClass = (props) => {
   const params = useParams();
   const { push } = useHistory();
 
-  let id = 1;
-  let calcId = id + Number(params.id);
+  // let id = 1;
+  // let calcId = id + Number(params.id);
 
   const saveClass = (e) => {
     e.preventDefault();
@@ -26,8 +26,8 @@ const InstClass = (props) => {
   };
 
   const deleteClass = () => {
-    axios
-      .delete(`https://anytimefitnessbuild.herokuapp.com/api/classes/${id}`)
+    axiosWithAuth()
+      .delete(`/api/classes/${params.id}`)
       .then((res) => {
         console.log("res in delete:", res);
         const scopedClasses = instClasses.filter((item) => {
@@ -58,7 +58,7 @@ const InstClass = (props) => {
   };
 
   useEffect(() => {
-    getClasses(calcId);
+    getClasses(params.id);
   }, []);
 
   return (

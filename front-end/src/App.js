@@ -106,6 +106,8 @@ function App() {
         component={InstUpdateClass}
         setSavedClasses={setSavedClasses}
         savedClasses={savedClasses}
+        instClasses={instClasses}
+        setInstClasses={setInstClasses}
       />
 
       <InstPrivateRoute

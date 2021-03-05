@@ -1,4 +1,4 @@
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import InstClassCard from "./InstCard";
 import { axiosWithAuth } from "../../helpers/axiosWithAuth";
@@ -10,6 +10,7 @@ const InstDash = (props) => {
   console.log("PROPS:", props);
   const { instClasses, setInstClasses } = props;
   const { push } = useHistory();
+  // const { id } = useParams();
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -48,8 +49,8 @@ const InstDash = (props) => {
         {instClasses.map((data, index) => {
           return (
             <div>
-              <ClassLink to={`/instructor-class/${index}`}>
-                <InstClassCard data={data} key={index} />
+              <ClassLink to={`/instructor-class/${instClasses[index].id}`}>
+                <InstClassCard data={data} key={instClasses[index].id} />
               </ClassLink>
             </div>
           );
