@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
+import { axiosWithAuth } from "../../helpers/axiosWithAuth";
 
 const initialClass = {
-  attendees: null,
-  classSize: null,
+  attendees: "",
+  classSize: "",
   date: "",
   duration: "",
-  id: Math.floor(Math.random() * 100 + 5),
   level: "",
   location: "",
   name: "",
@@ -20,8 +19,8 @@ const InstAddClass = (props) => {
   const [newClass, setNewClass] = useState(initialClass);
 
   const fetchClasses = () => {
-    axios
-      .get("https://anytimefitnessbuild.herokuapp.com/api/classes")
+    axiosWithAuth()
+      .get("/api/classes")
       .then((res) => {
         console.log("Res in add Class");
         props.setInstClasses(...props.instClasses, res.data);
@@ -44,8 +43,8 @@ const InstAddClass = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("https://anytimefitnessbuild.herokuapp.com/api/classes", newClass)
+    axiosWithAuth()
+      .post("/api/classes", newClass)
       .then((res) => {
         console.log("res when posting:", res);
         fetchClasses();
@@ -126,7 +125,7 @@ const InstAddClass = (props) => {
         ></input>
         <label>Max Class Size:</label>
         <input
-          name="duration"
+          name="classSize"
           onChange={handleChange}
           type="number"
           value={newClass.classSize}

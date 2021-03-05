@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import "./FormStyling.css";
 import styled from "styled-components";
+import { axiosWithAuth } from "../helpers/axiosWithAuth";
 
 const initialFormValues = {
   username: "",
@@ -22,8 +23,8 @@ export default function Signin() {
   const onSubmit = (evt) => {
     evt.preventDefault();
     localStorage.clear();
-    axios
-      .post("https://anytimefitnessbuild.herokuapp.com/api/auth/login", form)
+    axiosWithAuth()
+      .post("/api/auth/login", form)
       .then((res) => {
         localStorage.setItem("token", JSON.stringify(res.data.token));
         if (form.role === "2") {

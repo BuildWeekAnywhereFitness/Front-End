@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import axios from "axios";
+import { axiosWithAuth } from "../../helpers/axiosWithAuth";
 
 const initialClass = {
-  attendees: null,
-  classSize: null,
+  attendees: "",
+  classSize: "",
   date: "",
   duration: "",
-  id: Math.floor(Math.random() * 100 + 5),
   level: "",
   location: "",
   name: "",
@@ -21,8 +20,8 @@ const InstUpdateClass = (props) => {
   const { id } = useParams();
 
   useEffect(() => {
-    axios
-      .get(`https://anytimefitnessbuild.herokuapp.com/api/classes/${id}`)
+    axiosWithAuth()
+      .get(`/api/classes/${id}`)
       .then((res) => {
         console.log("Res in add Class");
         setNewClass(res.data);
@@ -41,11 +40,8 @@ const InstUpdateClass = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .put(
-        `https://anytimefitnessbuild.herokuapp.com/api/classes/${id}`,
-        newClass
-      )
+    axiosWithAuth()
+      .put(`/api/classes/${id}`, newClass)
       .then((res) => {
         console.log("res when posting new class:", res);
         props.setSavedClasses(
@@ -62,7 +58,6 @@ const InstUpdateClass = (props) => {
           classSize: null,
           date: "",
           duration: "",
-          id: res.data.length + 1,
           level: "",
           location: "",
           name: "",
@@ -117,7 +112,7 @@ const InstUpdateClass = (props) => {
           onChange={handleChange}
           type="number"
           value={newClass.attendees}
-          placeholder="Enter Time here"
+          placeholder="People Attending"
         ></input>
         <label>Intensity Level:</label>
         <input
@@ -143,16 +138,15 @@ const InstUpdateClass = (props) => {
           value={newClass.duration}
           placeholder="Enter Class Duration here"
         ></input>
-        <label>Class Attendees:</label>
+        <label>Max Class Size:</label>
         <input
-          name="duration"
+          name="classSize"
           onChange={handleChange}
-          type="text"
-          value={newClass.attendees}
-          placeholder="Number of Attendees"
+          type="number"
+          value={newClass.classSize}
+          placeholder="Class size:"
         ></input>
-
-        <button>Update This Class Here!</button>
+        <button>Update!</button>
       </form>
     </div>
   );
