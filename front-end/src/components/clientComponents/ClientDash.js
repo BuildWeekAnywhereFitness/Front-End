@@ -120,8 +120,6 @@ const ClientDash = (props) => {
               value.name.toLowerCase().includes(search.name.toLowerCase())
             ) {
               return value;
-            } else {
-              return value;
             }
           })
           .filter((value) => {
@@ -130,8 +128,6 @@ const ClientDash = (props) => {
               return value;
             } else if (value.date.includes(search.date)) {
               return value;
-            } else {
-              return value;
             }
           })
           .filter((value) => {
@@ -139,8 +135,6 @@ const ClientDash = (props) => {
             if (search.duration == null) {
               return value;
             } else if (value.duration.includes(search.duration)) {
-              return value;
-            } else {
               return value;
             }
           })
@@ -152,8 +146,6 @@ const ClientDash = (props) => {
               value.type.toLowerCase().includes(search.type.toLowerCase())
             ) {
               return value;
-            } else {
-              return value;
             }
           })
           .filter((value) => {
@@ -163,8 +155,6 @@ const ClientDash = (props) => {
             } else if (
               value.level.toLowerCase().includes(search.intensity.toLowerCase())
             ) {
-              return value;
-            } else {
               return value;
             }
           })
@@ -177,8 +167,6 @@ const ClientDash = (props) => {
                 .toLowerCase()
                 .includes(search.location.toLowerCase())
             ) {
-              return value;
-            } else {
               return value;
             }
           })
