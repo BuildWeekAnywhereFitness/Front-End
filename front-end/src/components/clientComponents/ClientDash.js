@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import ClassCard from "./ClassCard";
 import { axiosWithAuth } from "../../helpers/axiosWithAuth";
 
+// CURRENTLY WORKING ON VS CODE BUT NOT ON VERCEL, MOST IS WORKING BUT RESERVING CLASS IS BUGGED //
+// CURRENTLY WORKING ON VS CODE BUT NOT ON VERCEL, MOST IS WORKING BUT RESERVING CLASS IS BUGGED //
+// CURRENTLY WORKING ON VS CODE BUT NOT ON VERCEL, MOST IS WORKING BUT RESERVING CLASS IS BUGGED //
+
 const initialSearch = {
   name: "",
   time: "",
@@ -171,7 +175,7 @@ const ClientDash = (props) => {
             }
           })
           .map((event, index) => (
-            <ClassLink to={`/client-class/${index}`}>
+            <ClassLink to={`/client-class/${fitnessClasses[index].id}`}>
               <ClassCard data={event} key={index} />
             </ClassLink>
           ))}

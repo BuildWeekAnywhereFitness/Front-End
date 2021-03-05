@@ -19,14 +19,14 @@ const ClientClass = (props) => {
     push("/client-dash");
 
     // API ISN'T READY FORT THIS PART, THAT's WHY ITS COMMENTED
-    axiosWithAuth()
-      .post(`/api/attending/${params.id}`)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    //   axiosWithAuth()
+    //     .post(`/api/attending/${params.id}`)
+    //     .then((res) => {
+    //       console.log(res);
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
   };
   const fetchClasses = (id) => {
     axiosWithAuth()
@@ -44,7 +44,7 @@ const ClientClass = (props) => {
   };
 
   useEffect(() => {
-    fetchClasses(calcId);
+    fetchClasses(params.id);
   }, []);
 
   return (
